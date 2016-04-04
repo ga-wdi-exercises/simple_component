@@ -16,10 +16,10 @@ function Component() {
       "<button class='alert'>Alert it!</button>";
 
     this.domElement.html(templateString);
-    this.domElement.find(".message").text(statusText);
+    $(".message").text(statusText);
 
-    var button = this.domElement.find("button");
-    button.on("click", this.displayAlert.bind(this));
+    var button = $("button");
+    button.on("click", this.displayAlert);
   };
 
   this.displayAlert = function() {
