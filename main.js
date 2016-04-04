@@ -2,19 +2,35 @@ function Component() {
   this.domElement = null;
 
   this.initialize = function(container) {
-    // create a dom element
-    this.domElement = $('<div>');
-    // attach it
+    this.domElement = $('<div class="status"></div>');
     container.append(this.domElement);
+    this.statusMessage = "";
   };
 
   this.render = function(statusText) {
-    // update the dom element
-    this.domElement.html(statusText);
+    this.statusMessage = statusText;
+
+    var templateString =
+      "<p>The current status is: " +
+      "<span class='message'></span>.</p>" +
+      "<button class='alert'>Alert it!</button>";
+
+    this.domElement.html(templateString);
+    this.domElement.find(".message").text(statusText);
+
+    var button = this.domElement.find("button");
+    button.on("click", this.displayAlert.bind(this));
+  };
+
+  this.displayAlert = function() {
+    alert(this.statusMessage);
   };
 }
 
 var comp = new Component();
 comp.initialize($("#comp_demo"));
 comp.render("This is a test!");
-// component.render("This is a another test!");
+
+var comp2 = new Component();
+comp2.initialize($("#comp_demo2"));
+comp2.render("This is a another test!");

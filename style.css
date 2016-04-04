@@ -1,0 +1,10 @@
+.status {
+  margin: 2em auto;
+  width: 20em;
+  border: 1px solid black;
+  padding: 2em;
+}
+
+.message {
+  outline: 1px solid red;
+}
